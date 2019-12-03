@@ -12,7 +12,7 @@ class Window(Frame):
         sheight = self.winfo_screenheight()
         master.wm_title("CENECO PAYMENT MACHINE")
         master.geometry("1920x1080")
-        load = Image.open("Electric-Post.png")
+        load = Image.open("C:\\Users\\Electric-Post.png")
         load = load.resize((swidth, sheight), Image.ANTIALIAS)
         render = ImageTk.PhotoImage(load)
         img = Label(self, image=render)
