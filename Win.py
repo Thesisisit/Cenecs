@@ -108,6 +108,13 @@ class Window(Frame):
         window.focus_force()
         prevwindow.destroy()
         window.bind('<g>',lambda y:Window.back(self,window))
+        lisba = list(resultba)
+        resba = str(lisba)[2:-3]
+        flotba = float(str(resba))
+        lis = list(resultcred)
+        res = str(lis)[2:-3]
+        flot = float(str(res))  
+        sub = flotba - flot
         button2 = Button(window, text="Continue", bg="Green", fg="Black", command=lambda: Window.confirm(self,window,resultb, resultn, resultba, resultcred), font = ("TimesNewRoman 24 bold"), justify="center")
         button2.place(x=500, y=650)
         window.bind('<Return>',lambda y:Window.confirm(self,window))
@@ -128,7 +135,7 @@ class Window(Frame):
         canvas3 = Canvas(window, width=400, height= 50, bg="white")
         canvas3.place(x=70,y=525)
         canvas3.create_text(90,30,fill="black",font="Times 15",text="Amount to be Paid: ")
-        canvas3.create_text(245,30,fill="black",font="Times 20",text= resultba)
+        canvas3.create_text(245,30,fill="black",font="Times 20",text= sub)
         canvas.update
         canvas1.update
         canvas2.update
