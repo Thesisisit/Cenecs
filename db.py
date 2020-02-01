@@ -1,5 +1,5 @@
 import mysql.connector as sql
-from mysql.connector import Error
+from mysql.connector import Errimor
 import time
 
 

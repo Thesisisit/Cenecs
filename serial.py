@@ -1,3 +1,4 @@
+import serial
 from tkinter import *
 import tkinter.font as tkFont
 from PIL import Image, ImageTk
@@ -6,6 +7,7 @@ import os
 import mysql.connector as conn
 import tkinter.messagebox as messagebox
 from decimal import Decimal
+
 
 class Window(Frame):
     def __init__(self, master=None):
@@ -146,10 +148,18 @@ class Window(Frame):
         img = Label(window, image=render)
         img.image = render
         img.place(x=525, y=315)
+        #inserted = IntVar()
+        arduinoData = serial.Serial('COM6', 115200)
+        myData = (arduinoData.readline().strip())
+        output = myData.decode('utf-8')
+        print(output)
+        #while inserted != resultba:
+        #    window.after(500, hi(inserted))
         textt = Label(window, text="Amount Inserted: ", bg='light gray', font="Times 25 bold")
         textt.place(x=70,y=600)
-        texttt = Label(window, text="12,200.00", bg='light gray', font="Times 25 bold")
+        texttt = Label(window, text= output, bg='light gray', font="Times 25 bold")
         texttt.place(x=335,y=600)
+        #window.texttt.after(1000, Window.final)
 
     def confirm(self, pasok, resultb, resultn, resultba, resultcred):
         window = Toplevel(self)
@@ -196,7 +206,11 @@ class Window(Frame):
         img.image = render
         img.place(x=150, y=325)
         canvas.update
-
+if __name__ == "__main__":
+    root = Tk()
+    app = Window(root)
+    app.initfirst()
+    root.mainloop()
     
 
     
